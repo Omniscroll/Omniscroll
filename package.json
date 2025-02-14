@@ -1,5 +1,5 @@
 {
-  "name": "galeon",
+  "name": "omniscroll",
   "private": true,
   "scripts": {
     "build": "turbo build",
