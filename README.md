@@ -15,7 +15,7 @@
 Setup instructions will be available once the project reaches a stable release.  
 
 ## Contributing (Coming Soon)
-Contributions are welcome! But we need some time to setting everything up!
+Contributions are welcome! But we need some time to set everything up!
 
 ---
 
