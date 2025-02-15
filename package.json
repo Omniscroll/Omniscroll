@@ -5,7 +5,8 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test": "vitest"
   },
   "devDependencies": {
     "prettier": "^3.5.0",
@@ -15,5 +16,10 @@
   "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "@vitest/coverage-v8": "^3.0.5",
+    "tsx": "^4.19.2",
+    "vitest": "^3.0.5"
   }
 }

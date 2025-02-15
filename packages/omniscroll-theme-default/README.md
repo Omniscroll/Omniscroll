@@ -1,1 +1,1 @@
-This is Galeon default theme
+This is Omniscroll default theme

@@ -1,1 +1,1 @@
-// # Entry point for Galeon Core
+// # Entry point for Omniscroll Core

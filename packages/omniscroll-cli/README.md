@@ -1,1 +1,1 @@
-This is Galeon's CLI for initializing projects
+This is Omniscroll's CLI for initializing projects

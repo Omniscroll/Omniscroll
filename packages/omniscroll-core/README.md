@@ -1,1 +1,1 @@
-This is Galeon core library
+# This is Omniscroll core library
