@@ -15,5 +15,10 @@
   "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "@vitest/coverage-v8": "^3.0.5",
+    "tsx": "^4.19.2",
+    "vitest": "^3.0.5"
   }
 }
