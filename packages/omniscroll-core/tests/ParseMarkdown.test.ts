@@ -12,6 +12,17 @@ describe("Parse Markdown Function Tests", () => {
         vi.restoreAllMocks();
     });
 
+    it("should be called once", () => {
+        const mockMarkdownPath = path.resolve(__dirname, "../__mocks__/TestMarkdown.md");
+        const mockMarkdownContent = fs.readFileSync(mockMarkdownPath, "utf-8");
+
+        const parseMarkdownSpy = vi.spyOn(fs, "readFileSync").mockReturnValue(mockMarkdownContent);
+
+        ParseMarkdown(mockMarkdownPath);
+
+        expect(parseMarkdownSpy).toHaveBeenCalledTimes(1);
+    });
+
     it("should parse Markdown correctly", () => {
         const mockMarkdownPath = path.resolve(__dirname, "../__mocks__/TestMarkdown.md");
         const mockMarkdownContent = fs.readFileSync(mockMarkdownPath, "utf-8");
