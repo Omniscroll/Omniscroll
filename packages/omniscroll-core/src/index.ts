@@ -1,19 +1,14 @@
-#!/usr/bin/env node
+#!/usr/bin/env mode
 
-import { execSync } from "child_process";
-import fs from "fs-extra";
+import BuildSite from "./build";
+import DevServer from "./dev";
 
-const [command, ...args] = process.argv.slice(2);
+const args = process.argv.slice(2);
 
-const initProject = (name: string) => {
-    fs.copySync("path/to/default-template", name);
-    console.log(`Project ${name} initialized successfully!`);
-};
-
-switch (command) {
-    case "init":
-        initProject(args[0]);
-        break;
-    default:
-        console.log("Usage: omniscroll-cli [init <project-name>]");
+if (args[0] === "build") {
+    BuildSite("docs", "dist");
+} else if (args[0] === "dev") {
+    DevServer();
+} else {
+    console.log("Usage: omniscroll [build | dev]");
 }
