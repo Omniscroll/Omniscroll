@@ -1,33 +1,39 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - "**"
+    push:
+        branches:
+            - "**"
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
 
-      - name: Use Node.js 22
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: "pnpm"
+            - name: Use Node.js 22
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: "pnpm"
 
-      - name: Install dependencies
-        run: pnpm install
+            - name: Install dependencies
+              run: pnpm install
 
-      - name: Prettier checks
-        run: npx prettier . --check
+            - name: Prettier checks
+              run: pnpm prettier . --check
 
-      - name: Run Vitest
-        run: pnpm run test
+            - name: Prettier fix
+              run: pnpm prettier . --write
 
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm run lint && pnpm run build
+            - name: Run ESLint
+              run: pnpm run lint
+
+            - name: Run Vitest
+              run: pnpm run test
+
+            - run: pnpm install --frozen-lockfile
+            - run: pnpm run lint && pnpm run build
