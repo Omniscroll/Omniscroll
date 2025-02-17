@@ -4,15 +4,15 @@ import fs from "fs-extra";
 import path from "path";
 
 export default function BuildSite(baseDir: string, outDir: string) {
-  const routes = GetRoutes(baseDir);
+    const routes = GetRoutes(baseDir);
 
-  routes.forEach(({ path: routePath, file }) => {
-    const { frontmatter, content } = ParseMarkdown(file);
+    routes.forEach(({ path: routePath, file }) => {
+        const { frontmatter, content } = ParseMarkdown(file);
 
-    const outPath = path.posix.join(outDir, `${routePath}.html`);
+        const outPath = path.posix.join(outDir, `${routePath}.html`);
 
-    fs.outputFileSync(outPath, `<h1>${frontmatter.title}</h1>\n${content}`);
+        fs.outputFileSync(outPath, `<h1>${frontmatter.title}</h1>\n${content}`);
 
-    console.log("Build Complete:", outPath);
-  });
+        console.log("Build Complete:", outPath);
+    });
 }
