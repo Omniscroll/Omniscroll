@@ -13,10 +13,15 @@ describe("Parse Markdown Function Tests", () => {
     });
 
     it("should be called once", () => {
-        const mockMarkdownPath = path.resolve(__dirname, "../__mocks__/TestMarkdown.md");
+        const mockMarkdownPath = path.resolve(
+            __dirname,
+            "../__mocks__/TestMarkdown.md",
+        );
         const mockMarkdownContent = fs.readFileSync(mockMarkdownPath, "utf-8");
 
-        const parseMarkdownSpy = vi.spyOn(fs, "readFileSync").mockReturnValue(mockMarkdownContent);
+        const parseMarkdownSpy = vi
+            .spyOn(fs, "readFileSync")
+            .mockReturnValue(mockMarkdownContent);
 
         ParseMarkdown(mockMarkdownPath);
 
@@ -24,7 +29,10 @@ describe("Parse Markdown Function Tests", () => {
     });
 
     it("should parse Markdown correctly", () => {
-        const mockMarkdownPath = path.resolve(__dirname, "../__mocks__/TestMarkdown.md");
+        const mockMarkdownPath = path.resolve(
+            __dirname,
+            "../__mocks__/TestMarkdown.md",
+        );
         const mockMarkdownContent = fs.readFileSync(mockMarkdownPath, "utf-8");
 
         vi.spyOn(fs, "readFileSync").mockReturnValue(mockMarkdownContent);
@@ -33,8 +41,8 @@ describe("Parse Markdown Function Tests", () => {
 
         expect(result.frontmatter).toEqual({
             title: "Hello World",
-            description: "This is a test"
-        })
+            description: "This is a test",
+        });
         expect(result.content.trim()).toBe("# Welcome to Omniscroll");
     });
 });

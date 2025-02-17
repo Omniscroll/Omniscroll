@@ -30,15 +30,15 @@ describe("BuildSite function", () => {
 
         BuildSite(mockBaseDir, mockOutDir);
 
-        // ✅ Convert expected output paths to POSIX format before comparing
+        // Convert expected output paths to POSIX format before comparing
         expect(fsMock).toHaveBeenCalledWith(
             path.posix.join(mockOutDir, "a.html"),
-            `<h1>Title for /mockBase/a.md</h1>\nContent for /mockBase/a.md`
+            `<h1>Title for /mockBase/a.md</h1>\nContent for /mockBase/a.md`,
         );
 
         expect(fsMock).toHaveBeenCalledWith(
             path.posix.join(mockOutDir, "b.html"),
-            `<h1>Title for /mockBase/b.mdx</h1>\nContent for /mockBase/b.mdx`
+            `<h1>Title for /mockBase/b.mdx</h1>\nContent for /mockBase/b.mdx`,
         );
 
         expect(fsMock).toHaveBeenCalledTimes(2);

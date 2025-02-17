@@ -13,7 +13,10 @@ describe("Generate Routes from Markdown files", () => {
     });
 
     it("should generate correct URLs", () => {
-        const mockMarkdownFolder = path.resolve(__dirname, "../__mocks__/MarkdownFolder");
+        const mockMarkdownFolder = path.resolve(
+            __dirname,
+            "../__mocks__/MarkdownFolder",
+        );
 
         // Return all files in the mocked folder
         vi.spyOn(glob, "sync").mockReturnValue([
@@ -25,9 +28,20 @@ describe("Generate Routes from Markdown files", () => {
         const routes = GetRoutes(mockMarkdownFolder);
 
         expect(routes).toEqual([
-            { path: "/a", file: path.posix.normalize(`${mockMarkdownFolder}/a.md`) },
-            { path: "/b", file: path.posix.normalize(`${mockMarkdownFolder}/b.mdx`) },
-            { path: "/subfolder/c", file: path.posix.normalize(`${mockMarkdownFolder}/subfolder/c.md`) },
+            {
+                path: "/a",
+                file: path.posix.normalize(`${mockMarkdownFolder}/a.md`),
+            },
+            {
+                path: "/b",
+                file: path.posix.normalize(`${mockMarkdownFolder}/b.mdx`),
+            },
+            {
+                path: "/subfolder/c",
+                file: path.posix.normalize(
+                    `${mockMarkdownFolder}/subfolder/c.md`,
+                ),
+            },
         ]);
     });
 
@@ -42,7 +56,10 @@ describe("Generate Routes from Markdown files", () => {
     });
 
     it("should handle nested directories correctly", () => {
-        const nestedFolder = path.resolve(__dirname, "../__mocks__/NestedFolder");
+        const nestedFolder = path.resolve(
+            __dirname,
+            "../__mocks__/NestedFolder",
+        );
 
         vi.spyOn(glob, "sync").mockReturnValue([
             `${nestedFolder}/nested/a.md`,
@@ -53,9 +70,20 @@ describe("Generate Routes from Markdown files", () => {
         const routes = GetRoutes(nestedFolder);
 
         expect(routes).toEqual([
-            { path: "/nested/a", file: path.posix.normalize(`${nestedFolder}/nested/a.md`) },
-            { path: "/nested/b", file: path.posix.normalize(`${nestedFolder}/nested/b.mdx`) },
-            { path: "/nested/subfolder/c", file: path.posix.normalize(`${nestedFolder}/nested/subfolder/c.md`) },
+            {
+                path: "/nested/a",
+                file: path.posix.normalize(`${nestedFolder}/nested/a.md`),
+            },
+            {
+                path: "/nested/b",
+                file: path.posix.normalize(`${nestedFolder}/nested/b.mdx`),
+            },
+            {
+                path: "/nested/subfolder/c",
+                file: path.posix.normalize(
+                    `${nestedFolder}/nested/subfolder/c.md`,
+                ),
+            },
         ]);
     });
 });
